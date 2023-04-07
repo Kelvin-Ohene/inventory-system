@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <!-- search_results.html -->
+<h1>Search Results</h1>
+<div>
+  <button><a href="/to-inventory" class="my-button">Back</a></button>
+</div>
+<table class="data-table" style="table-layout: fixed;">
+  <thead>
+    <colgroup>
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 150px;">
+      <col style="width: 200px;">
+      <!-- Add more <col> elements here for each column -->
+  </colgroup>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Contact Person</th>
+        <th>Contact</th>
+        <th>E-Mail</th>
+        <th>Company</th>
+        <th>Manufacturer</th>
+        <th>Product</th>
+        <th>Model</th>
+        <th>Serial Number</th>
+        <th>Warranty</th>
+        <th>Warranty Info</th>
+        <th>Complaint</th>
+        <th>Date</th>
+        <th>Place Of Service</th>
+        <th>Current Location</th>
+        <th>Technician</th>
+        <th>Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in results %}
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.contact_person }}</td>
+      <td>{{ item.contact }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.company }}</td>
+      <td>{{ item.manufacturer }}</td>
+      <td>{{ item.product }}</td>
+      <td>{{ item.model }}</td>
+      <td>{{ item.serial_no }}</td>
+      <td>{{ item.warranty }}</td>
+      <td>{{ item.warranty_info }}</td>
+      <td>{{ item.complaint }}</td>
+      <td>{{ item.datee }}</td>
+      <td>{{ item.place_of_service }}</td>
+      <td>{{ item.current_location }}</td>
+      <td>{{ item.technician }}</td>
+      <td>{{ item.progress }}</td>
+      <td>
+        <form action="/update" method="post">
+          <input type="hidden" name="item_id" value="{{ item.id }}">
+          <input type="text" name="new_quantity" placeholder="New Quantity">
+          <input type="submit" value="Update">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<style>
+    h1{
+      color: #4F7942;
+    }
+
+    table {
+    width: 100%; /* Set the table to take up the full width of its parent container */
+    border-collapse: collapse; /* Remove the cell borders */
+    }
+
+    th, td {
+        margin-top: 5px;
+        padding: 8px; /* Add some padding to the cells */
+        text-align: left; /* Align the text in the cells */
+        border-bottom: 1px solid #ddd; /* Add a bottom border to the cells */
+    }
+
+    th {
+        background-color: #F8F8FF; /* Add a gray background color to the header cells */
+        color: #4F7942; /* Add white text color to the header cells */
+    }
+
+    /* Add hover effect to the rows */
+    tr:hover {
+        background-color: #f2f2f2; /* Add a light gray background color on hover */
+    }
+
+    /* Add a hover effect to the update button */
+    input[type="submit"]:hover {
+        background-color: #555; /* Add a dark gray background color on hover */
+        cursor: pointer; /* Change the cursor to a hand pointer */
+    }
+
+    /* Add some styling to the update form */
+    form {
+        margin-bottom: 0; /* Remove the bottom margin */
+    }
+
+    input[type="text"] {
+        padding: 6px; /* Add some padding to the text input */
+        border-radius: 4px; /* Add some roundness to the text input */
+        border: 1px solid #ddd; /* Add a light gray border to the text input */
+    }
+    /* Style the update button */
+    input[type="submit"] {
+        background-color: #4F7942; /* Add a dark gray background color */
+        color: #fff; /* Add white text color */
+        padding: 6px 12px; /* Add some padding to the button */
+        border-radius: 4px; /* Add some roundness to the button */
+        border: none; /* Remove the border */
+        font-size: 1em; /* Set the font size */
+        cursor: pointer; /* Change the cursor to a hand pointer */
+    }
+    div {
+      padding-bottom: 10px;
+    }
+    button {
+      text-align: center;
+      position: relative;
+      font-weight: 600;
+      height: 40px;
+      padding: 12px 20px;
+      outline: none;
+      border: 1px solid black;
+      background-color: transparent;
+      border-radius: 5px;
+    }
+
+    button:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 7px;
+      left: 7px;
+      height: 100%;
+      background-color: #4F7942;
+      z-index: -1;
+      transition: all 0.35s;
+      border-radius: inherit;
+    }
+
+    button:hover:after {
+      top: 0px;
+      left: 0px;
+  }
+
+  a:link {
+      color: white;
+  }
+
+  /* visited link */
+  a:visited {
+      color: white;
+  }
+
+  /* mouse over link */
+  a:hover {
+      color: white;
+  }
+
+  /* selected link */
+  a:active {
+      color: white;
+  }
+
+</style>
+</body>
+</html>

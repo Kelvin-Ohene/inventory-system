@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Data Form</title>
+</head>
+<body>
+    <div class="banner">
+        <img src="static/img/Capture1.PNG" alt="Image" class="img-responsive img-thumbnail">
+        <h1>Service Delivery Inventory System</h1>
+        <h2>Testing Form</h2>
+      </div>
+  <form action="/submit_data_testing" method="post">
+    <input type="text" id="address" name="address" placeholder="Address" required><br>
+    <input type="text" id="name" name="name" placeholder="Name" required><br>
+    <input type="text" id="telephone_number" name="telephone_number" placeholder="Telephone Number" required><br>
+    <input type="text" id="contact" name="contact" placeholder="Contact" required><br>
+    <input type="text" id="email" name="email" placeholder="E-mail" required><br>
+    <input type="text" id="complaint" name="complaint" placeholder="Complaint" required><br>
+    <input type="text" id="work_supervisor" name="work_supervisor" placeholder="Work Supervisor" required><br>
+    <input type="text" id="date_started" name="date_started" placeholder="Date Started" required><br>
+    <input type="text" id="date_completed" name="date_completed" placeholder="Date Completed" required><br>
+    <input type="text" id="equipment" name="equipment" placeholder="Equipment" required><br>
+    <input type="text" id="serial_number" name="serial_number" placeholder="Serial Number" required><br>
+    <input type="text" id="model" name="model" placeholder="Model" required><br>
+    <textarea id="technician" name="technician" placeholder="Technician" required></textarea><br>
+    <textarea id="technicians_report" name="technicians_report" placeholder="Technician's Report" required></textarea><br>
+    <textarea id="recommendation" name="recommendation" placeholder="Recommendation" required></textarea><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <form action="/testing_dashboard" method="post">
+    <h2><input type="submit" id="submit-btn" value="Show Dashboard"></h2>
+  </form>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      
+    }
+
+    h1{
+      color: #4F7942;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    form {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="date"]{
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border: 1px solid #4F7942;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: white;
+      color: #4F7942;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #4F7942;
+      color: black;
+    }
+
+    input[type="submit"] {
+      transition: background-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 10px #4F7942;
+      transition: box-shadow 0.5s ease-in-out;
+    }
+
+    /* Center the button */
+    .my-button {
+        display: flex; /* Use flexbox layout to center the button horizontally and vertically */
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto; /* Center the button horizontally */
+        /* Styling the button */
+        background-color: #4F7942; /* Add a dark gray background color */
+        color: #fff; /* Add white text color */
+        padding: 10px 20px; /* Add some padding to the button */
+        border-radius: 4px; /* Add some roundness to the button */
+        border: none; /* Remove the border */
+        font-size: 1em; /* Set the font size */
+        text-decoration: none; /* Remove underline from link */
+        cursor: pointer; /* Change the cursor to a hand pointer */
+        transition: background-color 0.2s ease-out; /* Add a smooth transition to the background color */
+    }
+
+    /* Add hover effect to the button */
+    .my-button:hover {
+        background-color: #4F7942; /* Change the background color on hover */
+    }
+
+  
+
+    .banner {
+
+      border-radius: 20px;
+    }
+
+    /* The container */
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      font-size: 17px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default radio button */
+    .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+      background-color: #4F7942;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+      top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 20%;
+      background: white;
+    }
+    img{
+      width: 15%;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+      mix-blend-mode: color-burn;
+    }
+    .banner{
+      text-align: center;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1 style="display: inline-block;">Search Inventory</h1>
+        <form action="/search_results" method="post" style="display: inline-block;">
+          <input class="glowing-input" type="text" name="search_term" placeholder="Search By Company Name">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+      
+<style>
+    /* Center the container div */
+    div {
+        text-align: center;
+    
+        /* Add a border around the container div */
+        border: 10px solid #333;
+        border-radius: 10px;
+
+        /* Center the container div vertically */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%; /* or any other desired value */
+    }
+
+    /* Style the h1 element */
+    h1 {
+        display: inline-block;
+        font-size: 2em;
+        margin-right: 20px;
+        color: #333;
+    }
+
+    /* Style the form element */
+    form {
+        display: inline-block;
+    }
+
+    /* Style the input elements within the form */
+    input[type='text'] {
+        padding: 10px;
+        font-size: 1.2em;
+        border-radius: 10px;
+        border: none;
+        margin-right: 20px;
+    }
+
+    input[type='submit'] {
+        padding: 10px 20px;
+        background-color: #4F7942;
+        color: #fff;
+        font-size: 1.2em;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type='submit']:hover {
+        background-color: #4F7942;
+    }
+
+    /* Add a "glowing" effect to the text input */
+    .glowing-input:focus {
+        box-shadow: 0 0 5px black;
+    }
+
+</style>
+</body>
+</html>
