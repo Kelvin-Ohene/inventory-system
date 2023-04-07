@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <form action="/to-table" method="post">
+    <table>
+      <label><h1>Update Form</h1></label>
+      <tr>
+        <td><label for="address">Address:</label></td>
+        <td>
+          <select id="address" name="address">
+            <option value="">Select an address</option>
+            <option value="VRA">VRA</option>
+            <option value="Address 2">Address 2</option>
+            <option value="Address 3">Address 3</option>
+          </select>
+          <input type="text" id="address_input" style="display:none;">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="equipment">Equipment:</label></td>
+        <td>
+          <select id="equipment" name="equipment">
+            <option value="">Select equipment</option>
+            <option value="Equipment 1">Equipment 1</option>
+            <option value="Equipment 2">Equipment 2</option>
+            <option value=">Equipment 3">Equipment 3</option>
+          </select>
+          <input type="text" id="equipment_input" style="display:none;">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="serial_number">Serial Number:</label></td>
+        <td>
+          <select id="serial_number" name="serial_number">
+            <option value="">Select serial number</option>
+            <option value="9NP4HG3">9NP4HG3</option>
+            <option value="2">Serial Number 2</option>
+            <option value="3">Serial Number 3</option>
+          </select>
+          <input type="text" id="serial_number_input" style="display:none;">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="fault">Fault:</label></td>
+        <td>
+          <select id="fault" name="fault">
+            <option value="">Select a fault</option>
+            <option value="1">Fault 1</option>
+            <option value="2">Fault 2</option>
+            <option value="3">Fault 3</option>
+          </select>
+          <input type="text" id="fault_input" style="display:none;">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="current_location">Current Location:</label></td>
+        <td>
+          <select id="current_location" name="current_location">
+            <option value="">Select a location</option>
+            <option value="1">Location 1</option>
+            <option value="2">Location 2</option>
+            <option value="3">Location 3</option>
+          </select>
+          <input type="text" id="current_location_input" style="display:none;">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="status">Status:</label></td>
+        <td>
+          <select id="status" name="status">
+            <option value="">Select a status</option>
+            <option value="1">Status 1</option>
+            <option value="2">Status 2</option>
+            <option value="3">Status 3</option>
+          </select>
+          <input type="text" id="status_input" style="display:none;">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="update">Update:</label></td>
+        <td><textarea id="update" name="update" rows="5" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Submit"></td>
+      </tr>
+    </table>
+  </form>
+  <script>
+    var selectElements = document.querySelectorAll("select");
+  
+    for (var i = 0; i < selectElements.length; i++) {
+      selectElements[i].addEventListener("dblclick", function() {
+        var selectElement = this;
+        var inputElement = document.getElementById(selectElement.id + "_input");
+        selectElement.style.display = "none";
+        inputElement.style.display = "block";
+        inputElement.value = selectElement.options[selectElement.selectedIndex].text;
+        inputElement.focus();
+        inputElement.addEventListener("blur", function() {
+          selectElement.style.display = "block";
+          inputElement.style.display = "none";
+          var editedOption = inputElement.value;
+          var options = selectElement.options;
+          var found = false;
+          for (var j = 0; j < options.length; j++) {
+            if (options[j].text === editedOption) {
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            var option = document.createElement("option");
+            option.value = editedOption;
+            option.text = editedOption;
+            selectElement.add(option);
+          }
+          selectElement.value = editedOption;
+        });
+      });
+    }
+  </script>
+  
+  <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        
+      }
+
+      h1{
+        color: #4F7942;
+      }
+
+      h1, h2 {
+        text-align: center;
+      }
+
+      form {
+        width: 600px;
+        margin: 0 auto;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #4F7942;;
+      }
+
+      input[type="date"]{
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 1px solid #4F7942;
+        border-radius: 4px;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: white;
+        color: #4F7942;
+        padding: 14px 20px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #4F7942;
+        color: black;
+      }
+
+      input[type="submit"] {
+        transition: background-color 0.3s ease;
+      }
+
+      input:focus, textarea:focus {
+        box-shadow: 0 0 10px #4F7942;
+        transition: box-shadow 0.5s ease-in-out;
+      }
+
+      /* Center the button */
+      .my-button {
+          display: flex; /* Use flexbox layout to center the button horizontally and vertically */
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto; /* Center the button horizontally */
+          /* Styling the button */
+          background-color: #4F7942; /* Add a dark gray background color */
+          color: #fff; /* Add white text color */
+          padding: 10px 20px; /* Add some padding to the button */
+          border-radius: 4px; /* Add some roundness to the button */
+          border: none; /* Remove the border */
+          font-size: 1em; /* Set the font size */
+          text-decoration: none; /* Remove underline from link */
+          cursor: pointer; /* Change the cursor to a hand pointer */
+          transition: background-color 0.2s ease-out; /* Add a smooth transition to the background color */
+      }
+
+      /* Add hover effect to the button */
+      .my-button:hover {
+          background-color: #4F7942; /* Change the background color on hover */
+      }
+
+    
+
+      .banner {
+
+        border-radius: 20px;
+      }
+
+      /* The container */
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        font-size: 17px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* Hide the browser's default radio button */
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* Create a custom radio button */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+      }
+
+      /* On mouse-over, add a grey background color */
+      .container:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      /* When the radio button is checked, add a blue background */
+      .container input:checked ~ .checkmark {
+        background-color: #4F7942;
+      }
+
+      /* Create the indicator (the dot/circle - hidden when not checked) */
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      /* Show the indicator (dot/circle) when checked */
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      /* Style the indicator (dot/circle) */
+      .container .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 20%;
+        background: white;
+      }
+      img{
+        width: 15%;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+        mix-blend-mode: color-burn;
+      }
+      .banner{
+        text-align: center;
+      }
+  </style>
+  
+  
+      
+</body>
+</html>
